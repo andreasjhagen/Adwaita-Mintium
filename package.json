@@ -1,0 +1,19 @@
+{
+    "name": "viridium-theme",
+    "version": "1.0.0",
+    "description": "Viridium GTK Theme",
+    "scripts": {
+        "build": "sass gtk-3.0/sass/gtk.scss gtk-3.0/gtk.css",
+        "build-dark": "sass gtk-3.0/sass/gtk-dark.scss gtk-3.0/gtk.css",
+        "build-all": "npm run build && npm run build-dark",
+        "watch": "sass --watch gtk-3.0/sass/gtk.scss gtk-3.0/gtk.css"
+    },
+    "devDependencies": {},
+    "keywords": [
+        "gtk",
+        "theme",
+        "sass"
+    ],
+    "author": "",
+    "license": "MIT"
+}

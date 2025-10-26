@@ -1,0 +1,231 @@
+/**
+ * Scales and Sliders
+ */
+
+scale {
+  min-height: 15px;
+  min-width: 15px;
+  padding: 3px;
+}
+scale.horizontal trough {
+  padding: 0 4px;
+}
+scale.horizontal highlight,
+scale.horizontal fill {
+  margin: 0 -4px;
+}
+scale.vertical trough {
+  padding: 4px 0;
+}
+scale.vertical highlight,
+scale.vertical fill {
+  margin: -4px 0;
+}
+scale slider {
+  min-height: 15px;
+  min-width: 15px;
+  margin: -6px;
+}
+scale.fine-tune slider {
+  margin: -4px;
+}
+scale.fine-tune fill,
+scale.fine-tune highlight,
+scale.fine-tune trough {
+  border-radius: 5px;
+  -gtk-outline-radius: 7px;
+}
+scale slider {
+  background-clip: border-box;
+  background-color: #333338;
+  border: 1px solid #1b1b1e;
+  border-radius: 50%;
+  box-shadow: none;
+}
+scale slider:disabled {
+  background-color: #2e2e33;
+  border-color: rgba(27, 27, 30, 0.8);
+}
+scale slider:active {
+  background-color: #0c75de;
+  border-color: #0c75de;
+}
+.osd scale slider {
+  background-color: #353535;
+  border-color: #0c75de;
+}
+.osd scale slider:hover {
+  background-color: #0c75de;
+}
+.osd scale slider:active {
+  background-color: #095cae;
+  border-color: #095cae;
+}
+menuitem:hover scale slider,
+row:selected scale slider,
+infobar scale slider {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+menuitem:hover scale slider:hover,
+row:selected scale slider:hover,
+infobar scale slider:hover {
+  background-color: #dbeafa;
+  border-color: #dbeafa;
+}
+menuitem:hover scale slider:active,
+row:selected scale slider:active,
+infobar scale slider:active {
+  background-color: #86baef;
+  border-color: #86baef;
+}
+menuitem:hover scale slider:disabled,
+row:selected scale slider:disabled,
+infobar scale slider:disabled {
+  background-color: #92c1f0;
+  border-color: #92c1f0;
+}
+scale trough {
+  outline-offset: 2px;
+  -gtk-outline-radius: 4.5px;
+  border-radius: 2.5px;
+  background-color: #222226;
+}
+scale trough:disabled {
+  background-color: rgba(34, 34, 38, 0.55);
+}
+.osd scale trough {
+  background-color: #474747;
+  outline-color: rgba(219, 219, 219, 0.2);
+}
+.osd scale trough highlight {
+  background-color: #0c75de;
+}
+menuitem:hover scale trough row:selected scale trough,
+infobar scale trough {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+menuitem:hover scale trough row:selected scale trough highlight,
+infobar scale trough highlight {
+  background-color: #ffffff;
+}
+menuitem:hover scale trough row:selected scale trough highlight:disabled,
+infobar scale trough highlight:disabled {
+  background-color: #92c1f0;
+}
+menuitem:hover scale trough row:selected scale trough:disabled,
+infobar scale trough:disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+scale highlight {
+  border-radius: 2.5px;
+  background-color: #0c75de;
+}
+scale highlight:disabled {
+  background-color: rgba(12, 117, 222, 0.55);
+}
+scale fill {
+  border-radius: 2.5px;
+  background-color: rgba(12, 117, 222, 0.5);
+}
+scale fill:disabled {
+  background-color: transparent;
+}
+scale value {
+  color: alpha(currentColor, 0.4);
+}
+scale value.top {
+  margin-bottom: 3px;
+}
+scale value.bottom {
+  margin-top: 3px;
+}
+scale value.left {
+  margin-right: 3px;
+}
+scale value.right {
+  margin-left: 3px;
+}
+scale marks {
+  color: alpha(currentColor, 0.4);
+}
+scale marks.top {
+  margin-bottom: 1px;
+  margin-top: -8px;
+}
+scale marks.bottom {
+  margin-top: 1px;
+  margin-bottom: -8px;
+}
+scale marks.top {
+  margin-right: 1px;
+  margin-left: -8px;
+}
+scale marks.bottom {
+  margin-left: 1px;
+  margin-right: -8px;
+}
+scale.fine-tune marks.top {
+  margin-bottom: 0px;
+  margin-top: -6px;
+}
+scale.fine-tune marks.bottom {
+  margin-top: 0px;
+  margin-bottom: -6px;
+}
+scale.fine-tune marks.top {
+  margin-right: 0px;
+  margin-left: -6px;
+}
+scale.fine-tune marks.bottom {
+  margin-left: 0px;
+  margin-right: -6px;
+}
+scale.horizontal indicator {
+  min-height: 7px;
+  min-width: 1px;
+}
+scale.horizontal.fine-tune indicator {
+  min-height: 6px;
+}
+scale.vertical indicator {
+  min-height: 1px;
+  min-width: 7px;
+}
+scale.vertical.fine-tune indicator {
+  min-width: 6px;
+}
+
+progressbar {
+  padding: 0;
+  font-size: smaller;
+  color: rgba(255, 255, 255, 0.57);
+}
+progressbar.osd {
+  min-width: 3px;
+  min-height: 3px;
+  background-color: transparent;
+}
+progressbar.osd trough {
+  border-style: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+progressbar progress {
+  background-color: #0c75de;
+  border-radius: 0px;
+  box-shadow: none;
+}
+row:selected progressbar progress,
+infobar progressbar progress {
+  background-color: #ffffff;
+}
+progressbar trough {
+  border: 1px solid #202023;
+  border-radius: 2px;
+  background-color: #222226;
+}
+row:selected progressbar trough,
+infobar progressbar trough {
+  background-color: rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,23 @@
+/**
+ * Labels - Text label styles
+ */
+
+label.separator {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+label selection {
+  color: #ffffff;
+  background-color: #0c75de;
+}
+
+label:disabled {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.dim-label,
+popover label.separator,
+popover.background label.separator,
+label.separator {
+  color: rgba(255, 255, 255, 0.52);
+}

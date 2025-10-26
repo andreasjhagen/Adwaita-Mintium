@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Titanite
+Comment=A dark flat theme with transparent elements
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Titanite
+MetacityTheme=Mint-Y
+IconTheme=Tela
+CursorTheme=Bibata-Modern-Classic
+ButtonLayout=:minimize,maximize,close

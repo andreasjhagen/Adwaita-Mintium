@@ -1,0 +1,276 @@
+/**
+ * Menus and Menu Items
+ */
+
+* {
+  -gtktreeview-horizontal-separator: 4;
+  -gtktreeview-grid-line-width: 1;
+  -gtktreeview-grid-line-pattern: "";
+  -gtktreeview-tree-line-width: 1;
+  -gtktreeview-tree-line-pattern: "";
+  -gtktreeview-expander-size: 16;
+}
+treeview.view acceleditor > label {
+  background-color: #0c75de;
+}
+treeview.view:selected,
+treeview.view:selected:focus {
+  border-radius: 0;
+  border-left-color: #86baef;
+  border-top-color: rgba(255, 255, 255, 0);
+}
+treeview.view:disabled {
+  color: rgba(255, 255, 255, 0.42);
+}
+treeview.view:disabled:selected {
+  color: #6daceb;
+}
+treeview.view.separator {
+  min-height: 2px;
+  color: rgba(0, 0, 0, 0.1);
+}
+treeview.view:drop(active) {
+  border-style: solid none;
+  border-width: 1px;
+  border-color: rgba(118, 177, 236, 0.935);
+}
+treeview.view:drop(active).after {
+  border-top-style: none;
+}
+treeview.view:drop(active).before {
+  border-bottom-style: none;
+}
+treeview.view.expander {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+  color: rgba(137, 137, 140, 0.935);
+}
+treeview.view.expander:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+}
+treeview.view.expander:hover {
+  color: rgba(255, 255, 255, 0.87);
+}
+treeview.view.expander:selected {
+  color: #b6d6f5;
+}
+treeview.view.expander:selected:hover {
+  color: #ffffff;
+}
+treeview.view.expander:checked {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+treeview.view.progressbar,
+treeview.view.progressbar:focus {
+  color: #ffffff;
+  border-radius: 8px;
+  background-color: #0c75de;
+}
+treeview.view.progressbar:selected,
+treeview.view.progressbar:selected:focus,
+treeview.view.progressbar:focus:selected,
+treeview.view.progressbar:focus:selected:focus {
+  color: #0c75de;
+  box-shadow: none;
+  background-color: #ffffff;
+}
+treeview.view.trough {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #222226;
+  border-radius: 8px;
+  border: 1px solid #202023;
+}
+treeview.view.trough:selected,
+treeview.view.trough:selected:focus {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border-width: 0;
+}
+treeview.view header button {
+  padding: 3px 6px;
+  font-weight: bold;
+  color: rgba(204, 204, 205, 0.896);
+  background-color: #2c2c31;
+  background-image: none;
+  border-style: none solid solid none;
+  border-radius: 0;
+  border-color: #202023;
+}
+treeview.view header button:active,
+treeview.view header button:hover {
+  background-color: #333339;
+}
+treeview.view header button:active:hover {
+  color: rgba(255, 255, 255, 0.87);
+}
+treeview.view header button:disabled {
+  border-color: #2e2e33;
+  background-image: none;
+}
+treeview.view header button:last-child {
+  border-right-style: none;
+}
+treeview.view button.dnd,
+treeview.view button.dnd:selected,
+treeview.view button.dnd:hover,
+treeview.view button.dnd:active,
+treeview.view header.button.dnd,
+treeview.view header.button.dnd:selected,
+treeview.view header.button.dnd:hover,
+treeview.view header.button.dnd:active {
+  transition: none;
+  color: #0c75de;
+  box-shadow: inset 1px 1px 0 1px #0c75de, inset -1px 0 0 1px #0c75de,
+    inset 1px 1px #2e2e33, inset -1px 0 #2e2e33;
+}
+
+menubar,
+.menubar {
+  -gtkwidget-window-dragging: true;
+  padding: 0px;
+  background-color: #222226;
+  color: rgba(255, 255, 255, 0.87);
+}
+menubar:backdrop,
+.menubar:backdrop {
+  color: rgba(255, 255, 255, 0.57);
+}
+menubar > menuitem,
+.menubar > menuitem {
+  padding: 6px 8px;
+  border: solid transparent;
+  border-width: 0;
+}
+menubar > menuitem:hover,
+.menubar > menuitem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.87);
+}
+menubar > menuitem:disabled,
+.menubar > menuitem:disabled {
+  color: rgba(255, 255, 255, 0.27);
+  border-color: transparent;
+}
+menubar > menuitem > label:disabled,
+.menubar > menuitem > label:disabled {
+  color: rgba(255, 255, 255, 0.42);
+}
+
+menu,
+.menu {
+  margin: 4px;
+  padding: 0;
+  border-radius: 0;
+  background-color: #2e2e33;
+  border: 1px solid #202023;
+}
+.csd menu,
+.csd .menu {
+  padding: 4px 0px;
+  border-radius: 12px;
+  border: none;
+}
+menu separator,
+.csd menu separator,
+.menu separator,
+.csd .menu separator {
+  margin: 2px 0;
+  background-color: #202023;
+}
+menu .separator:not(label),
+.csd menu .separator:not(label),
+.menu .separator:not(label),
+.csd .menu .separator:not(label) {
+  color: #2e2e33;
+}
+menu menuitem,
+.menu menuitem {
+  min-height: 16px;
+  min-width: 40px;
+  padding: 5px;
+}
+menu menuitem:hover,
+.menu menuitem:hover {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+menu menuitem:disabled,
+.menu menuitem:disabled {
+  color: rgba(255, 255, 255, 0.42);
+}
+menu menuitem arrow,
+.menu menuitem arrow {
+  min-height: 16px;
+  min-width: 16px;
+}
+menu menuitem arrow:dir(ltr),
+.menu menuitem arrow:dir(ltr) {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+  margin-left: 10px;
+}
+menu menuitem arrow:dir(rtl),
+.menu menuitem arrow:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic-rtl");
+  margin-right: 10px;
+}
+menuitem accelerator {
+  color: alpha(currentColor, 0.55);
+}
+menuitem check,
+menuitem radio {
+  min-height: 16px;
+  min-width: 16px;
+}
+menuitem check:dir(ltr),
+menuitem radio:dir(ltr) {
+  margin-right: 6px;
+  margin-left: 2px;
+}
+menuitem check:dir(rtl),
+menuitem radio:dir(rtl) {
+  margin-left: 6px;
+  margin-right: 2px;
+}
+menu menuitem label:dir(rtl),
+menu menuitem label:dir(ltr),
+.menu menuitem label:dir(rtl),
+.menu menuitem label:dir(ltr) {
+  color: inherit;
+}
+menu > arrow,
+.menu > arrow {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  min-width: 16px;
+  min-height: 16px;
+  padding: 4px;
+  background-color: #2e2e33;
+  border-radius: 0;
+}
+menu > arrow.top,
+.menu > arrow.top {
+  margin-top: -6px;
+  border-bottom: 1px solid rgba(62, 62, 67, 0.987);
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+}
+menu > arrow.bottom,
+.menu > arrow.bottom {
+  margin-bottom: -6px;
+  border-top: 1px solid rgba(62, 62, 67, 0.987);
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+menu > arrow:hover,
+.menu > arrow:hover {
+  background-color: rgba(62, 62, 67, 0.987);
+}
+menu > arrow:disabled,
+.menu > arrow:disabled {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.csd .popup {
+  border-radius: 12px;
+}
