@@ -8,10 +8,10 @@
 // These are the colors apps are can override. We define the defaults here and
 // define variables for them in _colors.scss
 
-@use 'sass:color';
-@use 'settings' as *;
-@use 'functions' as *;
-@use 'palette' as *;
+@use "sass:color";
+@use "settings" as *;
+@use "functions" as *;
+@use "palette" as *;
 
 // Using too many transparent colors in GTK3 can be performance heavy
 // and cause issues with some elements since we use a lot of color mixes.
@@ -21,7 +21,7 @@ $_text_color: #333334; // Similar to rgba(0,0,6,0.8) on the background #ffffff
 $_hb_fg_color: #2f2f30; // Similar to rgba(0,0,6,0.8) on the background #ebebed
 
 // The main accent color and the matching text value
-@define-color accent_bg_color @blue_3;
+@define-color accent_bg_color @green_5; //Can be changed to something like @blue_3 or so
 @define-color accent_fg_color white;
 
 // destructive-action buttons
@@ -40,7 +40,7 @@ $_hb_fg_color: #2f2f30; // Similar to rgba(0,0,6,0.8) on the background #ebebed
 
 // Colors derived from their matching bg color
 // Not quite the same as libadwaita but "close enough"
-@if $variant == 'light' {
+@if $variant == "light" {
   @define-color accent_color #{gtkmix('@accent_bg_color', black, 83%)};
   @define-color destructive_color #{gtkmix('@destructive_bg_color', black, 83%)};
   @define-color success_color #{gtkmix('@success_bg_color', black, 83%)};

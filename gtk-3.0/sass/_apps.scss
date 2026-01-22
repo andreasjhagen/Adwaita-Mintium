@@ -1,7 +1,7 @@
-@use 'modules' as *;
-@forward 'widgets/views';
-@forward 'widgets/buttons';
-@forward 'widgets/header-bar';
+@use "modules" as *;
+@forward "widgets/views";
+@forward "widgets/buttons";
+@forward "widgets/header-bar";
 
 // 3rd party application style fixes
 
@@ -9,10 +9,13 @@
 // * Gedit *
 // *********
 
-.org-gnome-gedit, .gedit-side-panel-paned {
+.org-gnome-gedit,
+.gedit-side-panel-paned {
   notebook > header {
     background-color: $headerbar_bg_color;
-    &:backdrop { background-color: $headerbar_backdrop_color; }
+    &:backdrop {
+      background-color: $headerbar_backdrop_color;
+    }
     box-shadow: inset 0 -1px $headerbar_shade_color;
   }
 }
@@ -52,11 +55,11 @@
 
   row:hover button {
     &:hover {
-      background-color: gtkalpha(currentColor, .15);
+      background-color: gtkalpha(currentColor, 0.15);
     }
 
     &:active {
-      background-color: gtkalpha(currentColor, .3);
+      background-color: gtkalpha(currentColor, 0.3);
     }
   }
 
@@ -84,7 +87,9 @@ XfdesktopIconView.view {
     background: gtkalpha(gtkmix(black, $accent_bg_color, 15%), 0.5);
     text-shadow: 0 1px 1px black;
   }
-  .label { text-shadow: 1px 1px 2px black; }
+  .label {
+    text-shadow: 1px 1px 2px black;
+  }
   .rubberband {
     @extend rubberband;
     border-radius: 0;
@@ -94,26 +99,43 @@ XfdesktopIconView.view {
 // Xfce4 panel
 $panel_transition_duration: 250ms;
 .xfce4-panel.background {
-  border: none; 
+  border: none;
   background-color: $panel_bg_color;
   color: $panel_fg_color;
   transition-duration: $panel_transition_duration;
 
   .tasklist button,
   #actions-button,
-  #clock-button { margin: 0 1px; }
+  #clock-button {
+    margin: 0 1px;
+  }
 
   &.horizontal .tasklist {
     button {
+      // Give all path segments a subtle tinted background for dark mode
+      background-color: gtkalpha($window_fg_color, 0.04);
       margin: 0 1px;
-      label { padding-right: 3px; }
+      label {
+        padding-right: 3px;
+      }
     }
   }
   &.vertical .tasklist {
     button {
       margin: 1px 0;
-      label { padding-bottom: 3px; }
+      label {
+        padding-bottom: 3px;
+      }
     }
+  }
+  // Make the first and last segment have a stronger dark tone for contrast
+  .path-bar button:first-child,
+  pathbar button:first-child {
+    background-color: gtkalpha($window_fg_color, 0.1);
+  }
+  .path-bar button:last-child,
+  pathbar button:last-child {
+    background-color: gtkalpha($window_fg_color, 0.1);
   }
 
   .tasklist image {
@@ -153,7 +175,9 @@ $panel_transition_duration: 250ms;
       background-color: gtkalpha($panel_fg_color, 0.2);
       color: $panel_fg_color;
 
-      &:hover { background-color: gtkalpha($panel_fg_color, 0.35); }
+      &:hover {
+        background-color: gtkalpha($panel_fg_color, 0.35);
+      }
 
       &:disabled {
         @include button(undecorated);
@@ -167,7 +191,9 @@ $panel_transition_duration: 250ms;
       box-shadow: inset 0 0 0 1px $accent_bg_color;
     }
 
-    entry { caret-color: $view_fg_color; }
+    entry {
+      caret-color: $view_fg_color;
+    }
     menu {
       -gtk-icon-effect: none;
 
@@ -192,7 +218,9 @@ $panel_transition_duration: 250ms;
         min-height: 6px;
         padding: 0;
       }
-      progress { min-height: 4px; }
+      progress {
+        min-height: 4px;
+      }
     }
 
     &.vertical {
@@ -200,10 +228,14 @@ $panel_transition_duration: 250ms;
         min-width: 6px;
         padding: 0;
       }
-      progress { min-width: 4px; }
+      progress {
+        min-width: 4px;
+      }
     }
 
-    progress { border-radius: 0px; }
+    progress {
+      border-radius: 0px;
+    }
 
     trough {
       background: gtkshade($panel_bg_color, 0.7);
@@ -216,8 +248,12 @@ $panel_transition_duration: 250ms;
 // Workspace switcher
 wnck-pager {
   background-color: gtkalpha($panel_fg_color, 0.1);
-  &:selected { background-color: gtkshade($accent_bg_color, 0.88); }
-  &:hover { background-color: $accent_bg_color; }
+  &:selected {
+    background-color: gtkshade($accent_bg_color, 0.88);
+  }
+  &:hover {
+    background-color: $accent_bg_color;
+  }
 }
 
 // Xfwm4's alt-tab dialog, aka "tabwin"
@@ -225,8 +261,8 @@ wnck-pager {
   padding: 12px;
   border-radius: $window_radius;
   // Set the application icon- and preview-size
-  -XfwmTabwinWidget-icon-size: 64px;
-  -XfwmTabwinWidget-preview-size: 128px;
+  -xfwmtabwinwidget-icon-size: 64px;
+  -xfwmtabwinwidget-preview-size: 128px;
 
   .tabwin-app-grid button {
     min-width: 96px;
@@ -236,7 +272,9 @@ wnck-pager {
 
 // Whisker menu
 window#whiskermenu-window {
-  button { transition: none; }
+  button {
+    transition: none;
+  }
 }
 
 #whiskermenu-button {
@@ -252,6 +290,12 @@ window#whiskermenu-window {
 // ********
 // * Nemo *
 // ********
+
+// Selectors for different parts of the Nemo interface:
+// - Sidebar: treeview.view.places-treeview
+// - Main window view: .nemo-window-pane .view
+// - Toolbar (containing buttons and path segments): .primary-toolbar.horizontal
+// - Status bar middle segment: statusbar .horizontal
 
 %desktop-canvas-item,
 .nemo-desktop.nemo-canvas-item {
@@ -276,26 +320,88 @@ window#whiskermenu-window {
 }
 
 .nemo-window {
+  // Modern and clean notebook tabs with colorized active state
+  notebook {
+    > header {
+      background-color: $headerbar_bg_color;
+      border-bottom: 1px solid $borders_color;
+
+      tabs {
+        > tab {
+          padding: 5px 12px;
+          font-size: 0.95rem;
+          border-radius: $button_radius $button_radius 0 0;
+          transition: background-color 200ms ease-out, color 200ms ease-out;
+
+          &:not(:checked) {
+            background-color: gtkalpha($accent_bg_color, 0.15);
+            color: gtkalpha($window_fg_color, 0.7);
+
+            &:hover {
+              background-color: gtkalpha($accent_bg_color, 0.25);
+              color: $window_fg_color;
+            }
+          }
+
+          &:checked {
+            background-color: gtkalpha($accent_bg_color, 0.6);
+            color: $window_fg_color;
+            font-weight: 500;
+
+            &:hover {
+              background-color: gtkalpha($accent_bg_color, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Nemo sidebar container
   .sidebar {
+    // Removes double border in Nemo's sidebar
     scrolledwindow.frame.nemo-places-sidebar {
-      // get rid of double border in sidebar
       border: none;
     }
 
+    // Sidebar treeview for places (bookmarks, devices, etc.)
+    // places-treeview is the actual sidebar list
     viewport.frame box.vertical treeview.view.places-treeview {
-      // use sidebar bg color
+      // Sets sidebar background and spacing
       background-image: image($window_bg_color);
-      border-radius: 0; // get rid of weird radius on selected rows
+      border-radius: 0;
+      font-size: 1.1rem;
+      margin-top: 0;
+      padding: 4px 0;
 
+      // Selected sidebar item
       &:selected {
         background: $accent_bg_color;
+        color: $accent_fg_color;
+        font-weight: 500;
       }
 
+      // Hovered sidebar item (not selected)
       &:not(:selected) {
         &:not(:backdrop):hover {
-          $base_hover_color: gtkalpha($window_fg_color, 0.05);
-          background-image: image($base_hover_color);
+          background-image: image(gtkalpha($accent_bg_color, 0.18));
+          color: $accent_color;
+          transition: all 150ms ease-out;
         }
+      }
+    }
+  }
+
+  // Make selected items more visible with less opacity
+  .view,
+  iconview {
+    &:selected,
+    &:selected:focus {
+      background-color: gtkalpha($accent_bg_color, 0.35);
+      color: $accent_fg_color;
+
+      &:hover {
+        background-color: gtkalpha($accent_bg_color, 0.45);
       }
     }
   }
@@ -333,10 +439,10 @@ window#whiskermenu-window {
     widget.linked.raised button {
       // use proper icons for next and left in stackswitcher-like pathbar
       &:first-child widget {
-        -gtk-icon-source: -gtk-icontheme('go-previous-symbolic');
+        -gtk-icon-source: -gtk-icontheme("go-previous-symbolic");
       }
       &:last-child widget {
-        -gtk-icon-source: -gtk-icontheme('go-next-symbolic');
+        -gtk-icon-source: -gtk-icontheme("go-next-symbolic");
       }
     }
 
@@ -350,18 +456,99 @@ window#whiskermenu-window {
       // link linked buttons
       margin-right: 0;
     }
+
+    // Use primary color for active/pressed buttons
+    button {
+      &:active,
+      &:checked {
+        background-color: $accent_bg_color;
+        color: $accent_fg_color;
+      }
+    }
   }
+
+  // Colorize path segments in location bar
+  .path-bar button,
+  pathbar button {
+    padding: 6px 10px;
+    margin: 0 1px;
+    // remove global rounding here; handled by widgets/_pathbar.scss
+    border-radius: 0;
+    font-size: 1.05rem;
+    font-weight: normal;
+    transition: all 200ms ease-out;
+
+    &:hover {
+      background-color: gtkalpha($accent_bg_color, 0.5);
+      margin-top: -1px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active,
+    &:checked {
+      background-color: gtkalpha($accent_bg_color, 0.5);
+      color: $window_fg_color;
+      margin-top: 0;
+    }
+  }
+
+  // Make the first segment rounded on the left and the last segment
+  // rounded on the right so the pathbar looks like connected pills.
+  .path-bar button:first-child,
+  pathbar button:first-child {
+    border-radius: $button_radius 0 0 $button_radius;
+  }
+  .path-bar button:last-child,
+  pathbar button:last-child {
+    border-radius: 0 $button_radius $button_radius 0;
+  }
+}
+
+/*Main BG Color for Nemo window*/
+.nemo-window-pane .view {
+  background-color: $view_bg_color;
+}
+
+//Selection rectangle when dragging to select multiple files
+.nemo-window-pane .view.rubberband,
+.nemo-window-pane .rubberband {
+  background-color: gtkalpha($accent_bg_color, 0.3);
+  border: 1px solid gtkalpha($accent_bg_color, 0.8);
+}
+
+/* 2. Enhanced Sidebar Spacing and Font Size (targeted selectors requested)
+These rules are deliberately specific so they reliably override defaults
+*/
+
+//This is the actively selected item in the sidebar
+.nemo-window .sidebar {
+  font-size: 14pt;
+  background-color: gtkalpha($accent_bg_color, 0.1);
+}
+
+.nemo-window .sidebar .view,
+.nemo-window .sidebar iconview,
+.nemo-window .sidebar row {
+  padding: 2px 2px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 1px 0;
+}
+.nemo-window .sidebar .view.cell,
+.nemo-window .sidebar iconview.cell,
+.nemo-window .sidebar row.cell {
+  padding: 4px 4px;
 }
 
 // ***********
 // * Firefox *
 // ***********
-
 #MozillaGtkWidget.background {
   // Make sure text selection is somewhat visible on websites with various backgrounds
   // One of the very few things that can still be changed in Firefox 140+
   selection {
-    &:focus, & {
+    &:focus,
+    & {
       background-color: $accent_bg_color;
       color: $accent_fg_color;
     }
@@ -377,8 +564,12 @@ terminal-window notebook > header {
   &.bottom {
     tabs {
       &:not(:only-child) {
-        &:first-child { margin-left: 0px; }
-        &:last-child { margin-right: 0px; }
+        &:first-child {
+          margin-left: 0px;
+        }
+        &:last-child {
+          margin-right: 0px;
+        }
       }
     }
   }
@@ -428,7 +619,9 @@ window.background.caja-navigation-window #Toolbar {
   border-style: solid none none none;
 }
 .caja-notebook {
-  .view, .view.frame, .frame {
+  .view,
+  .view.frame,
+  .frame {
     border-left: 0;
     border-right: 0;
   }
@@ -445,7 +638,7 @@ window.background.caja-navigation-window #Toolbar {
     background: gtkmix(currentColor, $window_bg_color, 5%);
     color: $window_fg_color;
     border-color: $borders_color;
-  
+
     &:selected {
       background: $accent_bg_color;
       color: $accent_fg_color;
@@ -471,7 +664,9 @@ window.background.caja-navigation-window #Toolbar {
   }
 }
 
-gnc-id-sheet-list { background-color: $window_bg_color; }
+gnc-id-sheet-list {
+  background-color: $window_bg_color;
+}
 
 // *********
 // * Geary *
@@ -533,7 +728,9 @@ geary-conversation-viewer#conversation_viewer {
 .geary-main-window leaflet > leaflet > box {
   &:first-child {
     background-color: $sidebar_bg_color;
-    &:backdrop { background-color: $sidebar_backdrop_color; }
+    &:backdrop {
+      background-color: $sidebar_backdrop_color;
+    }
   }
 }
 
@@ -543,18 +740,27 @@ geary-conversation-viewer#conversation_viewer {
     background-image: none;
     border-bottom: transparent;
     box-shadow: none;
-    &:backdrop { background-color: $sidebar_backdrop_color; }
+    &:backdrop {
+      background-color: $sidebar_backdrop_color;
+    }
 
     button {
       background-color: transparent;
       &:hover {
         background-color: $titlebutton_hover_color;
       }
-      &:hover:active, &:active, &:hover:checked, &:checked  {
+      &:hover:active,
+      &:active,
+      &:hover:checked,
+      &:checked {
         background-color: $titlebutton_active_color;
       }
-      &:backdrop { background: transparent; }
-      &:backdrop:hover { background: $titlebutton_hover_color; }
+      &:backdrop {
+        background: transparent;
+      }
+      &:backdrop:hover {
+        background: $titlebutton_hover_color;
+      }
     }
   }
 
@@ -580,7 +786,9 @@ geary-conversation-viewer#conversation_viewer {
   .sidebar.view {
     &:selected {
       background-color: $selected_color;
-      &:hover { background-color: $selected_hover_color; }
+      &:hover {
+        background-color: $selected_hover_color;
+      }
     }
     &:hover {
       background-color: $hover_color;
@@ -593,7 +801,7 @@ geary-conversation-viewer#conversation_viewer {
 // ************
 
 #DialogNotebook treeview.view:hover {
-  background-color: gtkalpha($accent_bg_color, .5);
+  background-color: gtkalpha($accent_bg_color, 0.5);
 }
 
 // **********
@@ -645,13 +853,22 @@ window.background:not(.solid-csd):not(.csd) > notebook > header {
     // https://github.com/lassekongo83/adw-gtk3/issues/262#issuecomment-2849406909
     border-radius: $button_radius;
     box-shadow: none;
-    &:hover { background-color: $hover_color; }
-    &:active, &:checked { background-color: $selected_color; }
-    &:checked:hover { background-color: $selected_hover_color; }
+    &:hover {
+      background-color: $hover_color;
+    }
+    &:active,
+    &:checked {
+      background-color: $selected_color;
+    }
+    &:checked:hover {
+      background-color: $selected_hover_color;
+    }
   }
 }
 
-window.background:not(.solid-csd):not(.csd) > notebook > stack:not(:only-child) {
+window.background:not(.solid-csd):not(.csd)
+  > notebook
+  > stack:not(:only-child) {
   background-color: $window_bg_color;
 }
 

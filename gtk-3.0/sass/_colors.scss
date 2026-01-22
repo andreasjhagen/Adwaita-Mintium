@@ -1,140 +1,263 @@
-@use 'settings' as *;
-@use 'functions' as *;
-@use 'palette' as *;
-@use 'defaults' as *;
+@use "settings" as *;
+@use "functions" as *;
+@use "palette" as *;
+@use "defaults" as *;
 
-// Some named colors from _defaults.scss
-$window_bg_color: gtkcolor(window_bg_color);
-$window_fg_color: gtkcolor(window_fg_color);
-$view_bg_color: gtkcolor(view_bg_color);
-$view_fg_color: gtkcolor(view_fg_color);
-$accent_bg_color: gtkcolor(accent_bg_color);
-$accent_fg_color: gtkcolor(accent_fg_color);
-$accent_color: gtkcolor(accent_color);
-$headerbar_bg_color: gtkcolor(headerbar_bg_color);
-$headerbar_fg_color: gtkcolor(headerbar_fg_color);
-$headerbar_border_color: gtkcolor(headerbar_border_color);
-$headerbar_backdrop_color: gtkcolor(headerbar_backdrop_color);
-$headerbar_shade_color: gtkcolor(headerbar_shade_color);
-$headerbar_darker_shade_color: gtkcolor(headerbar_darker_shade_color);
-$card_bg_color: gtkcolor(card_bg_color);
-$card_fg_color: gtkcolor(card_fg_color);
-$card_shade_color: gtkcolor(card_shade_color);
-$popover_bg_color: gtkcolor(popover_bg_color);
-$popover_fg_color: gtkcolor(popover_fg_color);
-$popover_shade_color: gtkcolor(popover_shade_color);
-$dialog_bg_color: gtkcolor(dialog_bg_color);
-$dialog_fg_color: gtkcolor(dialog_fg_color);
-$warning_bg_color: gtkcolor(warning_bg_color);
-$warning_fg_color: gtkcolor(warning_fg_color);
-$warning_color: gtkcolor(warning_color);
-$error_bg_color: gtkcolor(error_bg_color);
-$error_fg_color: gtkcolor(error_fg_color);
-$error_color: gtkcolor(error_color);
-$success_bg_color: gtkcolor(success_bg_color);
-$success_fg_color: gtkcolor(success_fg_color);
-$success_color: gtkcolor(success_color);
-$destructive_bg_color: gtkcolor(destructive_bg_color);
-$destructive_fg_color: gtkcolor(destructive_fg_color);
-$destructive_color: gtkcolor(destructive_color);
-$sidebar_bg_color: gtkcolor(sidebar_bg_color);
-$sidebar_fg_color: gtkcolor(sidebar_fg_color);
-$sidebar_backdrop_color: gtkcolor(sidebar_backdrop_color);
-$sidebar_border_color: gtkcolor(sidebar_border_color);
-$sidebar_shade_color: gtkcolor(sidebar_shade_color);
+// Named color variables from _defaults.scss
+$window_bg_color: gtkcolor(window_bg_color); // Main window background
+$window_fg_color: gtkcolor(window_fg_color); // Main window foreground/text
+$view_bg_color: gtkcolor(view_bg_color); // View background (lists, trees)
+$view_fg_color: gtkcolor(view_fg_color); // View foreground/text
+$accent_bg_color: gtkcolor(
+  accent_bg_color
+); // Accent background (primary color)
+$accent_fg_color: gtkcolor(accent_fg_color); // Accent foreground/text
+$accent_color: gtkcolor(
+  accent_color
+); // Accent color (used for links, highlights)
+$headerbar_bg_color: gtkcolor(headerbar_bg_color); // Headerbar background
+$headerbar_fg_color: gtkcolor(headerbar_fg_color); // Headerbar text
+$headerbar_border_color: gtkcolor(headerbar_border_color); // Headerbar border
+$headerbar_backdrop_color: gtkcolor(
+  headerbar_backdrop_color
+); // Headerbar backdrop
+$headerbar_shade_color: gtkcolor(headerbar_shade_color); // Headerbar shade
+$headerbar_darker_shade_color: gtkcolor(
+  headerbar_darker_shade_color
+); // Headerbar dark shade
+$card_bg_color: gtkcolor(card_bg_color); // Card background
+$card_fg_color: gtkcolor(card_fg_color); // Card text
+$card_shade_color: gtkcolor(card_shade_color); // Card shade
+$popover_bg_color: gtkcolor(popover_bg_color); // Popover background
+$popover_fg_color: gtkcolor(popover_fg_color); // Popover text
+$popover_shade_color: gtkcolor(popover_shade_color); // Popover shade
+$dialog_bg_color: gtkcolor(dialog_bg_color); // Dialog background
+$dialog_fg_color: gtkcolor(dialog_fg_color); // Dialog text
+$warning_bg_color: gtkcolor(warning_bg_color); // Warning background
+$warning_fg_color: gtkcolor(warning_fg_color); // Warning text
+$warning_color: gtkcolor(warning_color); // Warning accent
+$error_bg_color: gtkcolor(error_bg_color); // Error background
+$error_fg_color: gtkcolor(error_fg_color); // Error text
+$error_color: gtkcolor(error_color); // Error accent
+$success_bg_color: gtkcolor(success_bg_color); // Success background
+$success_fg_color: gtkcolor(success_fg_color); // Success text
+$success_color: gtkcolor(success_color); // Success accent
+$destructive_bg_color: gtkcolor(
+  destructive_bg_color
+); // Destructive action background
+$destructive_fg_color: gtkcolor(
+  destructive_fg_color
+); // Destructive action text
+$destructive_color: gtkcolor(destructive_color); // Destructive accent
+$sidebar_bg_color: gtkcolor(sidebar_bg_color); // Sidebar background
+$sidebar_fg_color: gtkcolor(sidebar_fg_color); // Sidebar text
+$sidebar_backdrop_color: gtkcolor(sidebar_backdrop_color); // Sidebar backdrop
+$sidebar_border_color: gtkcolor(sidebar_border_color); // Sidebar border
+$sidebar_shade_color: gtkcolor(sidebar_shade_color); // Sidebar shade
 
 // Extra colors not defined in _defaults.scss
-$caret_color: if($variant == 'light', gtkshade($view_fg_color, 1.05), gtkshade($view_fg_color, 0.97));
-$border_color: gtkalpha(currentColor, .15);
-$borders_color: gtkmix(currentColor, $window_bg_color, 15%);
-$selected_borders_color: if($variant== 'light', gtkmix(black, $accent_bg_color, 15%), gtkmix(black, $accent_bg_color, 30%));
+$caret_color: if(
+  $variant == "light",
+  gtkshade($view_fg_color, 1.05),
+  gtkshade($view_fg_color, 0.97)
+); // Caret color for text entries
+$border_color: gtkalpha(currentColor, 0.15); // Generic border color
+$borders_color: gtkmix(
+  currentColor,
+  $window_bg_color,
+  15%
+); // Mixed border color
+$selected_borders_color: if(
+  $variant== "light",
+  gtkmix(black, $accent_bg_color, 15%),
+  gtkmix(black, $accent_bg_color, 30%)
+); // Selected item border color
 
 // View selection colors (for most rows and icons etc)
-$view_hover_color: gtkalpha(currentColor, .04);
-$view_active_color: gtkalpha(currentColor, .08);
-$view_selected_color: gtkalpha($accent_bg_color, .25);
-$view_selected_hover_color: gtkalpha($accent_bg_color, .32);
-$view_selected_active_color: gtkalpha($accent_bg_color, .39);
+$view_hover_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  60%
+); // Hovered row background
+$view_active_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  65%
+); // Active row background
+$view_selected_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  70%
+); // Selected row background
+$view_selected_hover_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  75%
+); // Selected row hover background
+$view_selected_active_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  80%
+); // Selected row active background
 
 // libadwaita button colors (only used on a few selected elements)
-$adw_button: gtkalpha(currentColor, .1);
-$adw_button_hover: gtkalpha(currentColor, .15);
-$adw_button_active: gtkalpha(currentColor, .3);
-$adw_button_checked: gtkalpha(currentColor, .3);
-$adw_button_checked_hover: gtkalpha(currentColor, .35);
-$adw_button_checked_active: gtkalpha(currentColor, .40);
+$adw_button: gtkalpha(currentColor, 0.1); // Button background
+$adw_button_hover: gtkalpha(currentColor, 0.15); // Button hover background
+$adw_button_active: gtkalpha(currentColor, 0.3); // Button active background
+$adw_button_checked: gtkalpha(currentColor, 0.3); // Button checked background
+$adw_button_checked_hover: gtkalpha(
+  currentColor,
+  0.35
+); // Button checked hover background
+$adw_button_checked_active: gtkalpha(
+  currentColor,
+  0.4
+); // Button checked active background
 
 // These are mostly used for tabs and lists
-$hover_color: gtkalpha(currentColor, .07);
-$active_color: gtkalpha(currentColor, .16);
-$selected_color: gtkalpha(currentColor, .1);
-$selected_hover_color: gtkalpha(currentColor, .12);
-$selected_active_color: gtkalpha(currentColor, .19);
+$hover_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  60%
+); // Tab/list hover background
+$active_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  65%
+); // Tab/list active background
+$selected_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  70%
+); // Tab/list selected background
+$selected_hover_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  75%
+); // Tab/list selected hover background
+$selected_active_color: gtkmix(
+  $accent_bg_color,
+  $window_bg_color,
+  80%
+); // Tab/list selected active background
 
 // For scales and progressbars
-$trough_color: gtkalpha(currentColor, .15);
-$trough_hover_color: gtkalpha(currentColor, .2);
-$trough_active_color: gtkalpha(currentColor, .25);
-$progress_bg_color: $accent_bg_color;
-$progress_border_color: $selected_borders_color;
-$slider_color: gtkmix(white, $view_bg_color, 80%);
-$slider_hover_color: white;
+$trough_color: gtkalpha(currentColor, 0.15); // Progressbar trough
+$trough_hover_color: gtkalpha(currentColor, 0.2); // Progressbar trough hover
+$trough_active_color: gtkalpha(currentColor, 0.25); // Progressbar trough active
+$progress_bg_color: $accent_bg_color; // Progressbar background
+$progress_border_color: $selected_borders_color; // Progressbar border
+$slider_color: gtkmix(white, $view_bg_color, 80%); // Slider color
+$slider_hover_color: white; // Slider hover color
 
 // Switches & check/radio buttons
-$switch_color: gtkalpha(currentColor, .15);
-$switch_hover_color: gtkalpha(currentColor, .2);
-$checkradio_bg_color: $accent_bg_color;
-$checkradio_fg_color: $accent_fg_color;
-$checkradio_borders_color: if($variant == 'light', gtkmix(black,$checkradio_bg_color,20%), gtkmix(black,$checkradio_bg_color,40%));
+$switch_color: gtkalpha(currentColor, 0.15); // Switch background
+$switch_hover_color: gtkalpha(currentColor, 0.2); // Switch hover background
+$checkradio_bg_color: $accent_bg_color; // Check/radio background
+$checkradio_fg_color: $accent_fg_color; // Check/radio foreground
+$checkradio_borders_color: if(
+  $variant == "light",
+  gtkmix(black, $checkradio_bg_color, 20%),
+  gtkmix(black, $checkradio_bg_color, 40%)
+); // Check/radio border color
 
-// OSD
-$osd_fg_color: rgba(255,255,255,0.9);
-$osd_text_color: white;
-$osd_bg_color: rgba(0,0,0,0.7);
-$osd_disabled_bg_color: rgba(0,0,0,0.5);
-$osd_disabled_fg_color: rgba(255,255,255,0.5);
-$osd_borders_color: rgba(0,0,0,0.9);
+// OSD (On-Screen Display)
+$osd_fg_color: rgba(255, 255, 255, 0.9); // OSD foreground
+$osd_text_color: white; // OSD text
+$osd_bg_color: rgba(0, 0, 0, 0.7); // OSD background
+$osd_disabled_bg_color: rgba(0, 0, 0, 0.5); // OSD disabled background
+$osd_disabled_fg_color: rgba(255, 255, 255, 0.5); // OSD disabled foreground
+$osd_borders_color: rgba(0, 0, 0, 0.9); // OSD border
 
-// disabled state derived colors
-$disabled_fg_color: gtkalpha($window_fg_color, $disabled_opacity);
-$disabled_bg_color: gtkmix($window_bg_color, $view_bg_color, 60%);
-$disabled_borders_color: $border_color;
+// Disabled state derived colors
+$disabled_fg_color: gtkalpha(
+  $window_fg_color,
+  $disabled_opacity
+); // Disabled text
+$disabled_bg_color: gtkmix(
+  $window_bg_color,
+  $view_bg_color,
+  60%
+); // Disabled background
+$disabled_borders_color: $border_color; // Disabled border
 
 // Backdrop colors
-$backdrop_base_color: $window_bg_color;
-$backdrop_text_color: gtkmix($view_fg_color, $backdrop_base_color, 50%);
-$backdrop_bg_color: $window_bg_color;
-$backdrop_fg_color: gtkmix($window_fg_color, $backdrop_bg_color, 50%);
-$backdrop_disabled_color: gtkmix($backdrop_fg_color, $backdrop_bg_color, 50%);
-$backdrop_selected_fg_color: if($variant == 'light', $backdrop_base_color, $backdrop_text_color);
-$backdrop_borders_color: if($variant == 'light', gtkmix(currentColor, $window_bg_color, 19%), gtkmix(currentColor, $window_bg_color, 27%));
-$backdrop_dark_fill: gtkmix($backdrop_borders_color, $backdrop_bg_color, 70%);
+$backdrop_base_color: $window_bg_color; // Backdrop base
+$backdrop_text_color: gtkmix(
+  $view_fg_color,
+  $backdrop_base_color,
+  50%
+); // Backdrop text
+$backdrop_bg_color: $window_bg_color; // Backdrop background
+$backdrop_fg_color: gtkmix(
+  $window_fg_color,
+  $backdrop_bg_color,
+  50%
+); // Backdrop foreground
+$backdrop_disabled_color: gtkmix(
+  $backdrop_fg_color,
+  $backdrop_bg_color,
+  50%
+); // Backdrop disabled
+$backdrop_selected_fg_color: if(
+  $variant == "light",
+  $backdrop_base_color,
+  $backdrop_text_color
+); // Backdrop selected foreground
+$backdrop_borders_color: if(
+  $variant == "light",
+  gtkmix(currentColor, $window_bg_color, 19%),
+  gtkmix(currentColor, $window_bg_color, 27%)
+); // Backdrop border
+$backdrop_dark_fill: gtkmix(
+  $backdrop_borders_color,
+  $backdrop_bg_color,
+  70%
+); // Backdrop dark fill
 
-// scrollbar
-$scrollbar_bg_color: $view_bg_color;
-$scrollbar_slider_color: gtkalpha(currentColor, .2);
-$scrollbar_slider_hover_color: gtkalpha(currentColor, .4);
-$scrollbar_slider_active_color: gtkalpha(currentColor, .6);
+// Scrollbar
+$scrollbar_bg_color: $view_bg_color; // Scrollbar background
+$scrollbar_slider_color: gtkalpha(currentColor, 0.2); // Scrollbar slider
+$scrollbar_slider_hover_color: gtkalpha(
+  currentColor,
+  0.4
+); // Scrollbar slider hover
+$scrollbar_slider_active_color: gtkalpha(
+  currentColor,
+  0.6
+); // Scrollbar slider active
 
-// titlebuttons
-$titlebutton_color: gtkalpha(currentColor, .1);
-$titlebutton_hover_color: gtkalpha(currentColor, .15);
-$titlebutton_active_color: gtkalpha(currentColor, .3);
-$titlebutton_backdrop: $titlebutton_color;
-$titlebutton_backdrop_hover: $titlebutton_hover_color;
+// Titlebuttons
+$titlebutton_color: gtkalpha(currentColor, 0.1); // Titlebutton background
+$titlebutton_hover_color: gtkalpha(currentColor, 0.15); // Titlebutton hover
+$titlebutton_active_color: gtkalpha(currentColor, 0.3); // Titlebutton active
+$titlebutton_backdrop: $titlebutton_color; // Titlebutton backdrop
+$titlebutton_backdrop_hover: $titlebutton_hover_color; // Titlebutton backdrop hover
 
 // Misc
-$shadow_color: transparentize(black, 0.9);
-$tooltip_border_color: rgba(255,255,255,0.1);
-$link_color: $accent_color;
-$link_visited_color: gtkmix($link_color, $view_fg_color, 80%);
-$borders_edge: if($variant == 'light', gtkalpha(white, 0.5), gtkalpha($window_fg_color, 0.07));
-$top_hilight: $borders_edge;
-$alt_borders_color: if($variant == 'light', gtkmix(black, $window_bg_color, 24%), gtkmix(black, $window_bg_color, 18%));
-$suggested_bg_color: $accent_bg_color;
-$suggested_border_color: $selected_borders_color;
-$drop_target_color: $accent_bg_color;
+$shadow_color: transparentize(black, 0.9); // Shadow color
+$tooltip_border_color: rgba(255, 255, 255, 0.1); // Tooltip border
+$link_color: $accent_color; // Link color
+$link_visited_color: gtkmix(
+  $link_color,
+  $view_fg_color,
+  80%
+); // Visited link color
+$borders_edge: if(
+  $variant == "light",
+  gtkalpha(white, 0.5),
+  gtkalpha($window_fg_color, 0.07)
+); // Edge border color
+$top_hilight: $borders_edge; // Top highlight
+$alt_borders_color: if(
+  $variant == "light",
+  gtkmix(black, $window_bg_color, 24%),
+  gtkmix(black, $window_bg_color, 18%)
+); // Alternate border color
+$suggested_bg_color: $accent_bg_color; // Suggested background
+$suggested_border_color: $selected_borders_color; // Suggested border
+$drop_target_color: $accent_bg_color; // Drop target color
 
-// XFCE
-$panel_bg_color: gtkcolor(panel_bg_color);
-$panel_fg_color: gtkcolor(panel_fg_color);
+// XFCE panel colors
+$panel_bg_color: gtkcolor(panel_bg_color); // XFCE panel background
+$panel_fg_color: gtkcolor(panel_fg_color); // XFCE panel foreground

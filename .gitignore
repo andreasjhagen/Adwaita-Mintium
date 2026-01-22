@@ -1,0 +1,23 @@
+# Ignore node modules
+node_modules/
+
+# Build output directory
+/build/
+
+# GTK-3.0 compiled files
+/gtk-3.0/gtk.css
+/gtk-3.0/gtk.css.map
+
+# GTK-4.0 compiled files
+/gtk-4.0/gtk.css
+/gtk-4.0/gtk.css.map
+
+# Node modules (if ever added)
+node_modules/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

@@ -1,18 +1,32 @@
 {
-    "name": "viridium-theme",
+    "name": "mintium-theme",
     "version": "1.0.0",
-    "description": "Viridium GTK Theme",
+    "description": "Mintium GTK Theme - Modern Adwaita-based theme for Linux Mint",
     "scripts": {
-        "build": "sass gtk-3.0/sass/gtk.scss gtk-3.0/gtk.css",
-        "build-dark": "sass gtk-3.0/sass/gtk-dark.scss gtk-3.0/gtk.css",
-        "build-all": "npm run build && npm run build-dark",
-        "watch": "sass --watch gtk-3.0/sass/gtk.scss gtk-3.0/gtk.css"
+        "build": "node build.js",
+        "build:all": "node build.js",
+        "build:gtk3": "node build.js gtk3",
+        "build:gtk3-light": "node build.js gtk3-light",
+        "build:gtk3-dark": "node build.js gtk3-dark",
+        "build:gtk4": "node build.js gtk4",
+        "build:gtk4-light": "node build.js gtk4-light",
+        "build:gtk4-dark": "node build.js gtk4-dark",
+        "build:light": "node build.js light",
+        "build:dark": "node build.js dark",
+        "clean": "node build.js clean",
+        "watch": "npm run watch:gtk3",
+        "watch:gtk3": "sass --watch gtk-3.0/sass/gtk.scss gtk-3.0/gtk.css",
+        "watch:gtk3-dark": "sass --watch gtk-3.0/sass/gtk-dark.scss gtk-3.0/gtk.css",
+        "watch:gtk4": "sass --watch gtk-4.0/sass/gtk.scss gtk-4.0/gtk.css",
+        "watch:gtk4-dark": "sass --watch gtk-4.0/sass/gtk-dark.scss gtk-4.0/gtk.css"
     },
     "devDependencies": {},
     "keywords": [
         "gtk",
         "theme",
-        "sass"
+        "sass",
+        "linux-mint",
+        "adwaita"
     ],
     "author": "",
     "license": "MIT"

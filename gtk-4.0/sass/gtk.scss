@@ -1,0 +1,50 @@
+// This is the main sass file for GTK-4 light variant
+
+@use "../../gtk-3.0/sass/settings" with (
+  $variant: "light",
+  $toolkit: "gtk4"
+);
+
+@use "../../gtk-3.0/sass/colors-public";
+@use "../../gtk-3.0/sass/common";
+@use "../../gtk-3.0/sass/widgets/views";
+@use "../../gtk-3.0/sass/widgets/labels";
+@use "../../gtk-3.0/sass/widgets/spinner";
+@use "../../gtk-3.0/sass/widgets/entries";
+@use "../../gtk-3.0/sass/widgets/buttons";
+@use "../../gtk-3.0/sass/widgets/links";
+@use "../../gtk-3.0/sass/widgets/spin-button";
+@use "../../gtk-3.0/sass/widgets/combo-box";
+@use "../../gtk-3.0/sass/widgets/toolbars";
+@use "../../gtk-3.0/sass/widgets/header-bar";
+@use "../../gtk-3.0/sass/widgets/pathbar";
+@use "../../gtk-3.0/sass/widgets/treeviews";
+@use "../../gtk-3.0/sass/widgets/menus";
+@use "../../gtk-3.0/sass/widgets/popovers";
+@use "../../gtk-3.0/sass/widgets/notebook";
+@use "../../gtk-3.0/sass/widgets/scrolling";
+@use "../../gtk-3.0/sass/widgets/switch";
+@use "../../gtk-3.0/sass/widgets/checks";
+@use "../../gtk-3.0/sass/widgets/scale";
+@use "../../gtk-3.0/sass/widgets/progress-bar";
+@use "../../gtk-3.0/sass/widgets/level-bar";
+@use "../../gtk-3.0/sass/widgets/print-dialog";
+@use "../../gtk-3.0/sass/widgets/frame";
+@use "../../gtk-3.0/sass/widgets/lists";
+@use "../../gtk-3.0/sass/widgets/expander";
+@use "../../gtk-3.0/sass/widgets/calendar";
+@use "../../gtk-3.0/sass/widgets/message-dialog";
+@use "../../gtk-3.0/sass/widgets/sidebars";
+@use "../../gtk-3.0/sass/widgets/file-chooser";
+@use "../../gtk-3.0/sass/widgets/paned";
+@use "../../gtk-3.0/sass/widgets/misc";
+@use "../../gtk-3.0/sass/widgets/window";
+@use "../../gtk-3.0/sass/widgets/tooltip";
+@use "../../gtk-3.0/sass/widgets/color-chooser";
+@use "../../gtk-3.0/sass/widgets/app-notification";
+@use "../../gtk-3.0/sass/widgets/info-bar";
+
+// GTK4-specific libadwaita tweaks
+@use "../../gtk-3.0/sass/gtk4/libadwaita-tweaks";
+
+@use "../../gtk-3.0/sass/apps";

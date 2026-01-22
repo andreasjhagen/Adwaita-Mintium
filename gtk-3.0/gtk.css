@@ -43,7 +43,7 @@
 @define-color dark_3 #3d3846;
 @define-color dark_4 #241f31;
 @define-color dark_5 #000000;
-@define-color accent_bg_color @blue_3;
+@define-color accent_bg_color @green_5;
 @define-color accent_fg_color white;
 @define-color destructive_bg_color @red_4;
 @define-color destructive_fg_color white;
@@ -191,7 +191,7 @@ textview text selection, .view:selected, iconview:selected,
 .view text:selected,
 iconview text:selected,
 textview text:selected {
-  background-color: alpha(@accent_bg_color,0.25);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 .selection-mode button.titlebutton, treeview.view:selected:focus, treeview.view:selected, headerbar entry selection, .titlebar entry selection,
 entry selection, spinbutton:not(.vertical) selection, flowbox flowboxchild:selected, .view text selection:focus, iconview text selection:focus, .view text selection, iconview text selection,
@@ -264,7 +264,7 @@ flowbox flowboxchild:selected {
 }
 
 headerbar entry selection, .titlebar entry selection {
-  background-color: alpha(@accent_bg_color,0.25);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 .selection-mode button.titlebutton, label:selected, headerbar entry selection, .titlebar entry selection {
   color: @window_fg_color;
@@ -305,7 +305,7 @@ assistant .sidebar label {
   padding: 6px 12px;
 }
 assistant .sidebar label.highlight {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 
 .dim-label, .welcome .dim-label,
@@ -446,8 +446,8 @@ button:hover {
 notebook > header > tabs > arrow:active, notebook > header > tabs > arrow:checked,
 button:active,
 button:checked {
-  color: @window_fg_color;
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -455,7 +455,8 @@ button:checked {
 notebook > header > tabs > arrow:active:hover, notebook > header > tabs > arrow:checked:hover,
 button:active:hover,
 button:checked:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 notebook > header > tabs > arrow:active, notebook > header > tabs > arrow:checked,
 button:active,
@@ -506,7 +507,7 @@ notebook > header > tabs > arrow:disabled:active, notebook > header > tabs > arr
 button:disabled:active,
 button:disabled:checked {
   color: alpha(@window_fg_color,0.5);
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
 }
 notebook > header > tabs > arrow.image-button,
@@ -720,15 +721,16 @@ button.suggested-action:hover {
 }
 button.suggested-action:active,
 button.suggested-action:checked {
-  color: white;
-  background-color: mix(white,@accent_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 button.suggested-action:active:hover,
 button.suggested-action:checked:hover {
-  background-color: mix(white,@accent_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 button.suggested-action.flat:disabled {
   border-color: transparent;
@@ -749,7 +751,7 @@ button.suggested-action:disabled {
 button.suggested-action:disabled:active,
 button.suggested-action:disabled:checked {
   color: alpha(white,0.5);
-  background-color: mix(white,@accent_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
 }
 .osd button.suggested-action {
@@ -847,7 +849,7 @@ button.destructive-action:disabled {
 button.destructive-action:disabled:active,
 button.destructive-action:disabled:checked {
   color: alpha(@destructive_color,0.5);
-  background-color: mix(@destructive_color,alpha(currentColor,0.15),0.7);
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
 }
 .osd button.destructive-action {
@@ -981,14 +983,15 @@ stacksidebar row.needs-attention > label:dir(rtl),
   box-shadow: none;
 }
 .inline-toolbar toolbutton > button:active, .inline-toolbar toolbutton > button:checked {
-  color: @window_fg_color;
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 .inline-toolbar toolbutton > button:active:hover, .inline-toolbar toolbutton > button:checked:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 .inline-toolbar toolbutton > button:disabled {
   color: alpha(@window_fg_color,0.5);
@@ -999,7 +1002,7 @@ stacksidebar row.needs-attention > label:dir(rtl),
 }
 .inline-toolbar toolbutton > button:disabled:active, .inline-toolbar toolbutton > button:disabled:checked {
   color: alpha(@window_fg_color,0.5);
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
 }
 .inline-toolbar toolbutton > button:backdrop {
@@ -1010,10 +1013,10 @@ stacksidebar row.needs-attention > label:dir(rtl),
 }
 .inline-toolbar toolbutton > button:backdrop:active, .inline-toolbar toolbutton > button:backdrop:checked {
   color: alpha(@window_fg_color,0.5);
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 .inline-toolbar toolbutton > button:backdrop:active:hover, .inline-toolbar toolbutton > button:backdrop:checked:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 .inline-toolbar toolbutton > button:backdrop:disabled {
   color: alpha(@window_fg_color,0.5);
@@ -1023,7 +1026,7 @@ stacksidebar row.needs-attention > label:dir(rtl),
 }
 .inline-toolbar toolbutton > button:backdrop:disabled:active, .inline-toolbar toolbutton > button:backdrop:disabled:checked {
   color: alpha(@window_fg_color,0.5);
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 
 modelbutton.flat,
@@ -1036,11 +1039,11 @@ modelbutton.flat,
 }
 modelbutton.flat:hover,
 .menuitem.button.flat:hover {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 modelbutton.flat:selected,
 .menuitem.button.flat:selected {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 
 modelbutton.flat arrow {
@@ -1064,19 +1067,19 @@ button.color colorswatch:only-child, button.color colorswatch:only-child overlay
 }
 
 list row button.image-button:not(.flat):hover {
-  background-color: alpha(currentColor,0.04);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 list row button.image-button:not(.flat):active {
-  background-color: alpha(currentColor,0.08);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.35);
 }
 list row button.image-button:not(.flat):checked {
-  background-color: alpha(@accent_bg_color,0.25);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 list row button.image-button:not(.flat):checked:hover {
-  background-color: alpha(@accent_bg_color,0.32);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 list row button.image-button:not(.flat):checked:active {
-  background-color: alpha(@accent_bg_color,0.39);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.2);
 }
 
 button.toggle:not(.image-button) {
@@ -1257,8 +1260,8 @@ list.view.frame button.suggested-action:checked,
 list.view.frame > row:not(:selected):hover button.suggested-action:checked, popover.background button.suggested-action:checked, headerbar.selection-mode button:checked, headerbar.selection-mode button.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar.selection-mode button:checked, .titlebar.selection-mode button.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar button.suggested-action.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.suggested-action.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button.suggested-action:checked,
 headerbar .linked button.suggested-action:checked:not(:only-child), headerbar > .stack-switcher.linked > button.suggested-action:checked, .titlebar .linked.raised button.suggested-action:checked,
 .titlebar .linked button.suggested-action:checked:not(:only-child), .titlebar > .stack-switcher.linked > button.suggested-action:checked, headerbar .linked entry ~ .suggested-action.image-button:checked, .titlebar .linked entry ~ .suggested-action.image-button:checked, headerbar button.suggested-action:checked:not(.titlebutton), .titlebar button.suggested-action:checked:not(.titlebutton), headerbar viewswitcher button.suggested-action.radio:checked, .titlebar viewswitcher button.suggested-action.radio:checked {
-  color: @accent_fg_color;
-  background-color: mix(@accent_fg_color,alpha(@accent_bg_color,0.5),0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -1274,7 +1277,8 @@ list.content > row:not(:selected):hover button.suggested-action:checked:hover,
 list.view.frame button.suggested-action:checked:hover, popover.background button.suggested-action:checked:hover, headerbar.selection-mode button:checked:hover, headerbar.selection-mode button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar.selection-mode button:checked:hover, .titlebar.selection-mode button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar button.suggested-action.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.suggested-action.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button.suggested-action:checked:hover,
 headerbar .linked button.suggested-action:checked:hover:not(:only-child), headerbar > .stack-switcher.linked > button.suggested-action:checked:hover, .titlebar .linked.raised button.suggested-action:checked:hover,
 .titlebar .linked button.suggested-action:checked:hover:not(:only-child), .titlebar > .stack-switcher.linked > button.suggested-action:checked:hover, headerbar .linked entry ~ .suggested-action.image-button:checked:hover, .titlebar .linked entry ~ .suggested-action.image-button:checked:hover, headerbar button.suggested-action:checked:hover:not(.titlebutton), .titlebar button.suggested-action:checked:hover:not(.titlebutton), headerbar viewswitcher button.suggested-action.radio:checked:hover, .titlebar viewswitcher button.suggested-action.radio:checked:hover {
-  background-color: mix(@accent_fg_color,alpha(@accent_bg_color,0.5),0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 messagedialog.csd.background button.text-button.suggested-action:backdrop, .content list button.suggested-action:backdrop, .content list > row:not(:selected):hover button.suggested-action:backdrop,
 list.content button.suggested-action:backdrop,
@@ -1348,8 +1352,8 @@ list.view.frame button.destructive-action:checked,
 list.view.frame > row:not(:selected):hover button.destructive-action:checked, popover.background button.destructive-action:checked, headerbar button.destructive-action.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.destructive-action.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button.destructive-action:checked,
 headerbar .linked button.destructive-action:checked:not(:only-child), headerbar > .stack-switcher.linked > button.destructive-action:checked, .titlebar .linked.raised button.destructive-action:checked,
 .titlebar .linked button.destructive-action:checked:not(:only-child), .titlebar > .stack-switcher.linked > button.destructive-action:checked, headerbar .linked entry ~ .destructive-action.image-button:checked, .titlebar .linked entry ~ .destructive-action.image-button:checked, headerbar button.destructive-action:checked:not(.titlebutton), .titlebar button.destructive-action:checked:not(.titlebutton), headerbar viewswitcher button.destructive-action.radio:checked, .titlebar viewswitcher button.destructive-action.radio:checked {
-  color: @destructive_color;
-  background-color: mix(@destructive_color,alpha(currentColor,0.35),0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -1365,7 +1369,8 @@ list.content > row:not(:selected):hover button.destructive-action:checked:hover,
 list.view.frame button.destructive-action:checked:hover, popover.background button.destructive-action:checked:hover, headerbar button.destructive-action.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.destructive-action.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button.destructive-action:checked:hover,
 headerbar .linked button.destructive-action:checked:hover:not(:only-child), headerbar > .stack-switcher.linked > button.destructive-action:checked:hover, .titlebar .linked.raised button.destructive-action:checked:hover,
 .titlebar .linked button.destructive-action:checked:hover:not(:only-child), .titlebar > .stack-switcher.linked > button.destructive-action:checked:hover, headerbar .linked entry ~ .destructive-action.image-button:checked:hover, .titlebar .linked entry ~ .destructive-action.image-button:checked:hover, headerbar button.destructive-action:checked:hover:not(.titlebutton), .titlebar button.destructive-action:checked:hover:not(.titlebutton), headerbar viewswitcher button.destructive-action.radio:checked:hover, .titlebar viewswitcher button.destructive-action.radio:checked:hover {
-  background-color: mix(@destructive_color,alpha(currentColor,0.35),0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 messagedialog.csd.background button.text-button.destructive-action:backdrop, .content list button.destructive-action:backdrop, .content list > row:not(:selected):hover button.destructive-action:backdrop,
 list.content button.destructive-action:backdrop,
@@ -1843,14 +1848,15 @@ spinbutton:not(.vertical) button:disabled {
   background-color: transparent;
 }
 spinbutton:not(.vertical) button:active {
-  color: @window_fg_color;
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 spinbutton:not(.vertical) button:active:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 spinbutton:not(.vertical) button:active {
   background-color: alpha(currentColor,0.15);
@@ -2107,13 +2113,13 @@ headerbar .subtitle {
 headerbar stackswitcher button:checked:backdrop,
 headerbar button.toggle:checked:backdrop {
   color: alpha(@window_fg_color,0.5);
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 .titlebar:not(headerbar) stackswitcher button:checked:backdrop:hover,
 .titlebar:not(headerbar) button.toggle:checked:backdrop:hover,
 headerbar stackswitcher button:checked:backdrop:hover,
 headerbar button.toggle:checked:backdrop:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 .selection-mode .titlebar:not(headerbar), .selection-mode.titlebar:not(headerbar),
 .selection-mode headerbar,
@@ -2174,8 +2180,8 @@ headerbar.selection-mode button:active,
 headerbar.selection-mode button:checked,
 headerbar.selection-mode button.toggle:checked,
 headerbar.selection-mode button.toggle:active {
-  color: @accent_fg_color;
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -2189,7 +2195,8 @@ headerbar.selection-mode button:active:hover,
 headerbar.selection-mode button:checked:hover,
 headerbar.selection-mode button.toggle:checked:hover,
 headerbar.selection-mode button.toggle:active:hover {
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 .selection-mode .titlebar:not(headerbar) button:backdrop, .selection-mode.titlebar:not(headerbar) button:backdrop,
 .selection-mode headerbar button:backdrop.flat,
@@ -2213,7 +2220,7 @@ headerbar.selection-mode button:backdrop.flat:checked,
 headerbar.selection-mode button:backdrop:active,
 headerbar.selection-mode button:backdrop:checked {
   color: alpha(@accent_fg_color,0.5);
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 .selection-mode .titlebar:not(headerbar) button:backdrop:active:hover, .selection-mode .titlebar:not(headerbar) button:backdrop:checked:hover, .selection-mode.titlebar:not(headerbar) button:backdrop:active:hover, .selection-mode.titlebar:not(headerbar) button:backdrop:checked:hover,
 .selection-mode headerbar button:backdrop.flat:active:hover,
@@ -2224,7 +2231,7 @@ headerbar.selection-mode button:backdrop.flat:active:hover,
 headerbar.selection-mode button:backdrop.flat:checked:hover,
 headerbar.selection-mode button:backdrop:active:hover,
 headerbar.selection-mode button:backdrop:checked:hover {
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 .selection-mode .titlebar:not(headerbar) button:backdrop:disabled, .selection-mode.titlebar:not(headerbar) button:backdrop:disabled,
 .selection-mode headerbar button:backdrop.flat:disabled,
@@ -2246,7 +2253,7 @@ headerbar.selection-mode button:backdrop.flat:disabled:checked,
 headerbar.selection-mode button:backdrop:disabled:active,
 headerbar.selection-mode button:backdrop:disabled:checked {
   color: alpha(@accent_fg_color,0.5);
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 .selection-mode .titlebar:not(headerbar) button.flat:backdrop, .selection-mode .titlebar:not(headerbar) button.flat:disabled, .selection-mode.titlebar:not(headerbar) button.flat:backdrop, .selection-mode.titlebar:not(headerbar) button.flat:disabled,
 .selection-mode headerbar button.flat:backdrop,
@@ -2278,7 +2285,7 @@ headerbar.selection-mode button:disabled {
 headerbar.selection-mode button:disabled:active,
 headerbar.selection-mode button:disabled:checked {
   color: alpha(@accent_fg_color,0.5);
-  background-color: mix(@accent_fg_color,@accent_bg_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
 }
 .selection-mode .titlebar:not(headerbar) button.suggested-action, .selection-mode.titlebar:not(headerbar) button.suggested-action,
@@ -2299,8 +2306,8 @@ headerbar.selection-mode button.suggested-action:hover {
 .selection-mode .titlebar:not(headerbar) button.suggested-action:active, .selection-mode.titlebar:not(headerbar) button.suggested-action:active,
 .selection-mode headerbar button.suggested-action:active,
 headerbar.selection-mode button.suggested-action:active {
-  color: @window_fg_color;
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -2308,7 +2315,8 @@ headerbar.selection-mode button.suggested-action:active {
 .selection-mode .titlebar:not(headerbar) button.suggested-action:active:hover, .selection-mode.titlebar:not(headerbar) button.suggested-action:active:hover,
 .selection-mode headerbar button.suggested-action:active:hover,
 headerbar.selection-mode button.suggested-action:active:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 .selection-mode .titlebar:not(headerbar) button.suggested-action:disabled, .selection-mode.titlebar:not(headerbar) button.suggested-action:disabled,
 .selection-mode headerbar button.suggested-action:disabled,
@@ -2787,8 +2795,8 @@ headerbar .linked button:active:not(:only-child), headerbar > .stack-switcher.li
 .titlebar .linked button:active:not(:only-child), .titlebar > .stack-switcher.linked > button:active, headerbar .linked entry ~ .image-button:active, .titlebar .linked entry ~ .image-button:active, headerbar button.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked,
 headerbar .linked button:checked:not(:only-child), headerbar > .stack-switcher.linked > button:checked, .titlebar .linked.raised button:checked,
 .titlebar .linked button:checked:not(:only-child), .titlebar > .stack-switcher.linked > button:checked, headerbar .linked entry ~ .image-button:checked, .titlebar .linked entry ~ .image-button:checked {
-  color: @headerbar_fg_color;
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -2798,15 +2806,16 @@ headerbar .linked button:active:hover:not(:only-child), headerbar > .stack-switc
 .titlebar .linked button:active:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:active:hover, headerbar .linked entry ~ .image-button:active:hover, .titlebar .linked entry ~ .image-button:active:hover, headerbar button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked:hover,
 headerbar .linked button:checked:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:hover, .titlebar .linked.raised button:checked:hover,
 .titlebar .linked button:checked:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:hover, headerbar .linked entry ~ .image-button:checked:hover, .titlebar .linked entry ~ .image-button:checked:hover {
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 headerbar button.text-button:active:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:active:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:active:hover,
 headerbar .linked button:active:hover:not(:only-child), headerbar > .stack-switcher.linked > button:active:hover, .titlebar .linked.raised button:active:hover,
 .titlebar .linked button:active:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:active:hover, headerbar .linked entry ~ .image-button:active:hover, .titlebar .linked entry ~ .image-button:active:hover, headerbar button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked:hover,
 headerbar .linked button:checked:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:hover, .titlebar .linked.raised button:checked:hover,
 .titlebar .linked button:checked:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:hover, headerbar .linked entry ~ .image-button:checked:hover, .titlebar .linked entry ~ .image-button:checked:hover {
-  color: @headerbar_fg_color;
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -2816,7 +2825,8 @@ headerbar .linked button:active:hover:hover:not(:only-child), headerbar > .stack
 .titlebar .linked button:active:hover:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:active:hover:hover, headerbar .linked entry ~ .image-button:active:hover:hover, .titlebar .linked entry ~ .image-button:active:hover:hover, headerbar button.text-button:checked:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked:hover:hover,
 headerbar .linked button:checked:hover:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:hover:hover, .titlebar .linked.raised button:checked:hover:hover,
 .titlebar .linked button:checked:hover:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:hover:hover, headerbar .linked entry ~ .image-button:checked:hover:hover, .titlebar .linked entry ~ .image-button:checked:hover:hover {
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 headerbar button.text-button:active:backdrop:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:active:backdrop:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:active:backdrop,
 headerbar .linked button:active:backdrop:not(:only-child), headerbar > .stack-switcher.linked > button:active:backdrop, .titlebar .linked.raised button:active:backdrop,
@@ -2824,14 +2834,14 @@ headerbar .linked button:active:backdrop:not(:only-child), headerbar > .stack-sw
 headerbar .linked button:checked:backdrop:not(:only-child), headerbar > .stack-switcher.linked > button:checked:backdrop, .titlebar .linked.raised button:checked:backdrop,
 .titlebar .linked button:checked:backdrop:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:backdrop, headerbar .linked entry ~ .image-button:checked:backdrop, .titlebar .linked entry ~ .image-button:checked:backdrop {
   color: alpha(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),0.5);
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 headerbar button.text-button:active:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:active:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:active:backdrop:hover,
 headerbar .linked button:active:backdrop:hover:not(:only-child), headerbar > .stack-switcher.linked > button:active:backdrop:hover, .titlebar .linked.raised button:active:backdrop:hover,
 .titlebar .linked button:active:backdrop:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:active:backdrop:hover, headerbar .linked entry ~ .image-button:active:backdrop:hover, .titlebar .linked entry ~ .image-button:active:backdrop:hover, headerbar button.text-button:checked:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked:backdrop:hover,
 headerbar .linked button:checked:backdrop:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:backdrop:hover, .titlebar .linked.raised button:checked:backdrop:hover,
 .titlebar .linked button:checked:backdrop:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:backdrop:hover, headerbar .linked entry ~ .image-button:checked:backdrop:hover, .titlebar .linked entry ~ .image-button:checked:backdrop:hover {
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 headerbar button.text-button:active:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:active:backdrop:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:active:backdrop:hover,
 headerbar .linked button:active:backdrop:hover:not(:only-child), headerbar > .stack-switcher.linked > button:active:backdrop:hover, .titlebar .linked.raised button:active:backdrop:hover,
@@ -2839,14 +2849,14 @@ headerbar .linked button:active:backdrop:hover:not(:only-child), headerbar > .st
 headerbar .linked button:checked:backdrop:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:backdrop:hover, .titlebar .linked.raised button:checked:backdrop:hover,
 .titlebar .linked button:checked:backdrop:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:backdrop:hover, headerbar .linked entry ~ .image-button:checked:backdrop:hover, .titlebar .linked entry ~ .image-button:checked:backdrop:hover {
   color: alpha(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),0.5);
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 headerbar button.text-button:active:backdrop:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:active:backdrop:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:active:backdrop:hover:hover,
 headerbar .linked button:active:backdrop:hover:hover:not(:only-child), headerbar > .stack-switcher.linked > button:active:backdrop:hover:hover, .titlebar .linked.raised button:active:backdrop:hover:hover,
 .titlebar .linked button:active:backdrop:hover:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:active:backdrop:hover:hover, headerbar .linked entry ~ .image-button:active:backdrop:hover:hover, .titlebar .linked entry ~ .image-button:active:backdrop:hover:hover, headerbar button.text-button:checked:backdrop:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:checked:backdrop:hover:hover:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:checked:backdrop:hover:hover,
 headerbar .linked button:checked:backdrop:hover:hover:not(:only-child), headerbar > .stack-switcher.linked > button:checked:backdrop:hover:hover, .titlebar .linked.raised button:checked:backdrop:hover:hover,
 .titlebar .linked button:checked:backdrop:hover:hover:not(:only-child), .titlebar > .stack-switcher.linked > button:checked:backdrop:hover:hover, headerbar .linked entry ~ .image-button:checked:backdrop:hover:hover, .titlebar .linked entry ~ .image-button:checked:backdrop:hover:hover {
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 headerbar button.text-button:disabled:not(.suggested-action):not(.destructive-action):not(:disabled), .titlebar button.text-button:disabled:not(.suggested-action):not(.destructive-action):not(:disabled), headerbar .linked.raised button:disabled,
 headerbar .linked button:disabled:not(:only-child), headerbar > .stack-switcher.linked > button:disabled, .titlebar .linked.raised button:disabled,
@@ -2894,38 +2904,40 @@ headerbar button:hover:backdrop:not(.titlebutton), .titlebar button:hover:backdr
   -gtk-icon-shadow: none;
 }
 headerbar button:active:not(.titlebutton), .titlebar button:active:not(.titlebutton), headerbar button:checked:not(.titlebutton), .titlebar button:checked:not(.titlebutton), headerbar viewswitcher button.radio:checked, .titlebar viewswitcher button.radio:checked {
-  color: @headerbar_fg_color;
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 headerbar button:active:hover:not(.titlebutton), .titlebar button:active:hover:not(.titlebutton), headerbar button:checked:hover:not(.titlebutton), .titlebar button:checked:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:hover, .titlebar viewswitcher button.radio:checked:hover {
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 headerbar button:active:hover:not(.titlebutton), .titlebar button:active:hover:not(.titlebutton), headerbar button:checked:hover:not(.titlebutton), .titlebar button:checked:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:hover, .titlebar viewswitcher button.radio:checked:hover {
-  color: @headerbar_fg_color;
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 headerbar button:active:hover:hover:not(.titlebutton), .titlebar button:active:hover:hover:not(.titlebutton), headerbar button:checked:hover:hover:not(.titlebutton), .titlebar button:checked:hover:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:hover:hover, .titlebar viewswitcher button.radio:checked:hover:hover {
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 headerbar button:active:backdrop:not(.titlebutton), .titlebar button:active:backdrop:not(.titlebutton), headerbar button:checked:backdrop:not(.titlebutton), .titlebar button:checked:backdrop:not(.titlebutton), headerbar viewswitcher button.radio:checked:backdrop, .titlebar viewswitcher button.radio:checked:backdrop {
   color: alpha(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),0.5);
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 headerbar button:active:backdrop:hover:not(.titlebutton), .titlebar button:active:backdrop:hover:not(.titlebutton), headerbar button:checked:backdrop:hover:not(.titlebutton), .titlebar button:checked:backdrop:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:backdrop:hover, .titlebar viewswitcher button.radio:checked:backdrop:hover {
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 headerbar button:active:backdrop:hover:not(.titlebutton), .titlebar button:active:backdrop:hover:not(.titlebutton), headerbar button:checked:backdrop:hover:not(.titlebutton), .titlebar button:checked:backdrop:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:backdrop:hover, .titlebar viewswitcher button.radio:checked:backdrop:hover {
   color: alpha(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),0.5);
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.7);
+  background-color: alpha(@accent_bg_color,0.25);
 }
 headerbar button:active:backdrop:hover:hover:not(.titlebutton), .titlebar button:active:backdrop:hover:hover:not(.titlebutton), headerbar button:checked:backdrop:hover:hover:not(.titlebutton), .titlebar button:checked:backdrop:hover:hover:not(.titlebutton), headerbar viewswitcher button.radio:checked:backdrop:hover:hover, .titlebar viewswitcher button.radio:checked:backdrop:hover:hover {
-  background-color: mix(mix(@headerbar_fg_color,@headerbar_backdrop_color,0.5),@headerbar_backdrop_color,0.6);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 headerbar button.default:not(:backdrop):not(.suggested-action):not(.destructive-action):not(.titlebutton), .titlebar button.default:not(:backdrop):not(.suggested-action):not(.destructive-action):not(.titlebutton), headerbar viewswitcher button.default.radio:not(:backdrop):not(.suggested-action):not(.destructive-action):checked, .titlebar viewswitcher button.default.radio:not(:backdrop):not(.suggested-action):not(.destructive-action):checked {
   color: @headerbar_fg_color;
@@ -3096,12 +3108,12 @@ treeview.view acceleditor > label {
 }
 
 treeview.view:not(:backdrop):not(:selected):hover {
-  background-color: alpha(currentColor,0.04);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 
 menubar,
 .menubar {
-  -GtkWidget-window-dragging: true;
+  -gtkwidget-window-dragging: true;
   padding: 0;
 }
 menubar:backdrop,
@@ -3127,7 +3139,8 @@ menubar > menuitem menu:dir(rtl) menuitem, menubar > menuitem menu:dir(ltr) menu
 }
 menubar > menuitem:hover,
 .menubar > menuitem:hover {
-  background-color: alpha(currentColor,0.1);
+  background-color: alpha(@accent_bg_color,0.2);
+  color: @accent_color;
 }
 menubar > menuitem:disabled,
 .menubar > menuitem:disabled {
@@ -3176,7 +3189,7 @@ menu menuitem:hover,
 .menu menuitem:hover,
 .context-menu menuitem:hover {
   color: @window_fg_color;
-  background-color: alpha(currentColor,0.1);
+  background-color: alpha(@accent_bg_color,0.35);
 }
 menu menuitem:disabled,
 .menu menuitem:disabled,
@@ -3320,14 +3333,15 @@ popover.background button:hover {
   box-shadow: none;
 }
 popover.background button:active, popover.background button:checked {
-  color: @popover_fg_color;
-  background-color: mix(@popover_fg_color,@popover_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 popover.background button:active:hover, popover.background button:checked:hover {
-  background-color: mix(@popover_fg_color,@popover_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 popover.background button:disabled {
   color: alpha(mix(@popover_fg_color,@popover_bg_color,0.5),0.5);
@@ -3361,7 +3375,7 @@ popover.background .menuitem.button.flat:disabled label {
 }
 popover.background modelbutton.flat:backdrop:hover,
 popover.background .menuitem.button.flat:backdrop:hover {
-  background-color: alpha(currentColor,0.04);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 
 popover.menu > stack {
@@ -3379,7 +3393,7 @@ notebook > header tabs {
   margin: -1px;
 }
 notebook > header.top > tabs > tab:hover, notebook > header.bottom > tabs > tab:hover, notebook > header.left > tabs > tab:hover, notebook > header.right > tabs > tab:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 notebook > header.top {
   border-bottom-style: solid;
@@ -3508,15 +3522,15 @@ notebook > header tab.reorderable-page:focus {
   outline-offset: -2px;
 }
 notebook > header tab.reorderable-page:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
   box-shadow: none;
 }
 notebook > header tab.reorderable-page:checked {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
   box-shadow: none;
 }
 notebook > header tab.reorderable-page:checked:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 notebook > header tab button.flat {
   color: alpha(currentColor,0.3);
@@ -3921,14 +3935,17 @@ switch:disabled slider {
   -gtk-icon-shadow: none;
 }
 
-checkbutton.text-button, radiobutton.text-button {
+checkbutton.text-button,
+radiobutton.text-button {
   padding: 2px 0;
   outline-offset: 0;
 }
-checkbutton.text-button label:not(:only-child):first-child, radiobutton.text-button label:not(:only-child):first-child {
+checkbutton.text-button label:not(:only-child):first-child,
+radiobutton.text-button label:not(:only-child):first-child {
   margin-left: 4px;
 }
-checkbutton.text-button label:not(:only-child):last-child, radiobutton.text-button label:not(:only-child):last-child {
+checkbutton.text-button label:not(:only-child):last-child,
+radiobutton.text-button label:not(:only-child):last-child {
   margin-right: 4px;
 }
 
@@ -4094,6 +4111,7 @@ menu menuitem radio:indeterminate:disabled {
   box-shadow: none;
   -gtk-icon-shadow: none;
   color: inherit;
+  border-style: solid;
   border-width: 1px;
   border-color: alpha(currentColor,0.6);
 }
@@ -4107,9 +4125,6 @@ check:checked {
 check:indeterminate {
   -gtk-icon-source: image(-gtk-recolor(url("assets/dash-symbolic.svg")), -gtk-recolor(url("assets/dash-symbolic.symbolic.png")));
 }
-menu menuitem check,
-menu menuitem check:hover,
-menu menuitem check:disabled,
 menu menuitem check:checked,
 menu menuitem check:checked:hover,
 menu menuitem check:checked:disabled,
@@ -4117,6 +4132,8 @@ menu menuitem check:indeterminate,
 menu menuitem check:indeterminate:hover,
 menu menuitem check:indeterminate:disabled {
   border: none;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
 }
 
 treeview.view radio:selected:focus, treeview.view radio:selected,
@@ -5148,10 +5165,10 @@ row:backdrop {
   transition: 200ms ease-out;
 }
 row.activatable.has-open-popup, row.activatable:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 row.activatable:active {
-  background-color: alpha(currentColor,0.16);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.35);
 }
 row.activatable:backdrop:hover {
   background-color: transparent;
@@ -5160,18 +5177,18 @@ row.activatable:selected {
   color: @window_fg_color;
 }
 row.activatable:selected:active {
-  background-color: alpha(currentColor,0.19);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.2);
 }
 row.activatable:selected.has-open-popup, row.activatable:selected:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
   color: @window_fg_color;
 }
 row.activatable:selected:backdrop {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
   color: @window_fg_color;
 }
 row:selected {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 
 .content list button, .content list > row:not(:selected):hover button,
@@ -5213,8 +5230,8 @@ list.view.frame button:active,
 list.view.frame button:checked,
 list.view.frame > row:not(:selected):hover button:active,
 list.view.frame > row:not(:selected):hover button:checked {
-  color: @card_fg_color;
-  background-color: mix(@card_fg_color,@card_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
@@ -5228,7 +5245,8 @@ list.view.frame button:active:hover,
 list.view.frame button:checked:hover,
 list.view.frame > row:not(:selected):hover button:active:hover,
 list.view.frame > row:not(:selected):hover button:checked:hover {
-  background-color: mix(@card_fg_color,@card_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 .content list button:disabled, .content list > row:not(:selected):hover button:disabled,
 list.content button:disabled,
@@ -5329,16 +5347,16 @@ calendar.button {
   color: @view_fg_color;
 }
 calendar.button:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 calendar.button:active {
-  background-color: alpha(currentColor,0.16);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.35);
 }
 calendar.button:checked {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 calendar.button:checked:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 calendar.button:backdrop {
   color: mix(@window_fg_color,@window_bg_color,0.5);
@@ -6041,7 +6059,7 @@ button.emoji-section:hover {
   border-color: alpha(@window_fg_color,0.1);
 }
 button.emoji-section:checked {
-  border-color: alpha(currentColor,0.1);
+  border-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 button.emoji-section label {
   padding: 0;
@@ -6061,10 +6079,10 @@ popover.emoji-picker .emoji {
 }
 popover.emoji-picker .emoji :focus,
 popover.emoji-picker .emoji :hover {
-  background: alpha(currentColor,0.07);
+  background: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 popover.emoji-picker .emoji :active {
-  background: alpha(currentColor,0.16);
+  background: mix(@accent_bg_color,@window_bg_color,0.35);
 }
 
 popover.emoji-completion arrow {
@@ -6077,7 +6095,7 @@ popover.emoji-completion contents row box {
 }
 
 popover.emoji-completion .emoji:hover {
-  background: alpha(currentColor,0.04);
+  background: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 
 .flat.popup:not(.title) {
@@ -6458,13 +6476,13 @@ headerbar viewswitcher button > stack > box {
   border-radius: 9px;
 }
 headerbar viewswitcher button:hover > stack > box {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 headerbar viewswitcher button:checked > stack > box, headerbar viewswitcher button:active > stack > box {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 headerbar viewswitcher button:checked:hover > stack > box, headerbar viewswitcher button:backdrop:checked:hover > stack > box {
-  background-color: alpha(currentColor,0.19);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.2);
 }
 
 viewswitcher, viewswitcher button {
@@ -6658,13 +6676,13 @@ tabbar tab {
   background-repeat: no-repeat;
 }
 tabbar tab:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 tabbar tab:checked {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 tabbar tab:checked:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 tabbar .start-action,
 tabbar .end-action {
@@ -6702,7 +6720,7 @@ tabbar .end-action:dir(ltr) > * {
 
 .tab-drag-icon tab {
   min-height: 26px;
-  background-color: alpha(currentColor,0.16);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.35);
   box-shadow: 0 3px 9px 1px rgba(0, 0, 0, 0.25), 0 0 0 1px alpha(mix(currentColor,@window_bg_color,0.85),0.9), inset 0 1px alpha(@window_fg_color,0.07);
   margin: 25px;
 }
@@ -6905,7 +6923,7 @@ window.csd.unified .sidebar separator {
   min-height: 0;
 }
 window.csd.unified .sidebar list row:backdrop:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 
 window.rounded,
@@ -7315,15 +7333,16 @@ button.back-button.text-button {
   background-repeat: no-repeat no-repeat;
   background-position: 5px 50%;
   background-size: 21px;
-  color: @headerbar_fg_color;
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 .titlebar button.back-button:active:hover,
 .titlebar button.back-button.text-button:active:hover {
-  background-color: mix(@headerbar_fg_color,@headerbar_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 button.back-button:dir(rtl),
 button.back-button.text-button:dir(rtl) {
@@ -7340,13 +7359,16 @@ button.back-button.text-button:dir(rtl) {
   border-radius: 2px;
 }
 
-.org-gnome-gedit notebook > header, .gedit-side-panel-paned notebook > header {
+.org-gnome-gedit notebook > header,
+.gedit-side-panel-paned notebook > header {
   background-color: @headerbar_bg_color;
 }
-.org-gnome-gedit notebook > header:backdrop, .gedit-side-panel-paned notebook > header:backdrop {
+.org-gnome-gedit notebook > header:backdrop,
+.gedit-side-panel-paned notebook > header:backdrop {
   background-color: @headerbar_backdrop_color;
 }
-.org-gnome-gedit notebook > header, .gedit-side-panel-paned notebook > header {
+.org-gnome-gedit notebook > header,
+.gedit-side-panel-paned notebook > header {
   box-shadow: inset 0 -1px @headerbar_shade_color;
 }
 
@@ -7420,6 +7442,7 @@ XfdesktopIconView.view .rubberband {
   margin: 0 1px;
 }
 .xfce4-panel.background.horizontal .tasklist button {
+  background-color: alpha(@window_fg_color,0.04);
   margin: 0 1px;
 }
 .xfce4-panel.background.horizontal .tasklist button label {
@@ -7430,6 +7453,14 @@ XfdesktopIconView.view .rubberband {
 }
 .xfce4-panel.background.vertical .tasklist button label {
   padding-bottom: 3px;
+}
+.xfce4-panel.background .path-bar button:first-child,
+.xfce4-panel.background pathbar button:first-child {
+  background-color: alpha(@window_fg_color,0.1);
+}
+.xfce4-panel.background .path-bar button:last-child,
+.xfce4-panel.background pathbar button:last-child {
+  background-color: alpha(@window_fg_color,0.1);
 }
 .xfce4-panel.background .tasklist image {
   margin-left: 2px;
@@ -7542,8 +7573,8 @@ wnck-pager:hover {
 #xfwm-tabwin {
   padding: 12px;
   border-radius: 15px;
-  -XfwmTabwinWidget-icon-size: 64px;
-  -XfwmTabwinWidget-preview-size: 128px;
+  -xfwmtabwinwidget-icon-size: 64px;
+  -xfwmtabwinwidget-preview-size: 128px;
 }
 #xfwm-tabwin .tabwin-app-grid button {
   min-width: 96px;
@@ -7580,18 +7611,62 @@ window#whiskermenu-window button {
   background-color: @window_bg_color;
 }
 
+.nemo-window notebook > header {
+  background-color: @headerbar_bg_color;
+  border-bottom: 1px solid mix(currentColor,@window_bg_color,0.85);
+}
+.nemo-window notebook > header tabs > tab {
+  padding: 5px 12px;
+  font-size: 0.95rem;
+  border-radius: 9px 9px 0 0;
+  transition: background-color 200ms ease-out, color 200ms ease-out;
+}
+.nemo-window notebook > header tabs > tab:not(:checked) {
+  background-color: alpha(@accent_bg_color,0.15);
+  color: alpha(@window_fg_color,0.7);
+}
+.nemo-window notebook > header tabs > tab:not(:checked):hover {
+  background-color: alpha(@accent_bg_color,0.25);
+  color: @window_fg_color;
+}
+.nemo-window notebook > header tabs > tab:checked {
+  background-color: alpha(@accent_bg_color,0.6);
+  color: @window_fg_color;
+  font-weight: 500;
+}
+.nemo-window notebook > header tabs > tab:checked:hover {
+  background-color: alpha(@accent_bg_color,0.7);
+}
 .nemo-window .sidebar scrolledwindow.frame.nemo-places-sidebar {
   border: none;
 }
 .nemo-window .sidebar viewport.frame box.vertical treeview.view.places-treeview {
   background-image: image(@window_bg_color);
   border-radius: 0;
+  font-size: 1.1rem;
+  margin-top: 0;
+  padding: 4px 0;
 }
 .nemo-window .sidebar viewport.frame box.vertical treeview.view.places-treeview:selected {
   background: @accent_bg_color;
+  color: @accent_fg_color;
+  font-weight: 500;
 }
 .nemo-window .sidebar viewport.frame box.vertical treeview.view.places-treeview:not(:selected):not(:backdrop):hover {
-  background-image: image(alpha(@window_fg_color,0.05));
+  background-image: image(alpha(@accent_bg_color,0.18));
+  color: @accent_color;
+  transition: all 150ms ease-out;
+}
+.nemo-window .view:selected, .nemo-window .view:selected:focus,
+.nemo-window iconview:selected,
+.nemo-window iconview:selected:focus {
+  background-color: alpha(@accent_bg_color,0.35);
+  color: @accent_fg_color;
+}
+.nemo-window .view:selected:hover, .nemo-window .view:selected:focus:hover,
+.nemo-window iconview:selected:hover,
+.nemo-window iconview:selected:focus:hover {
+  background-color: alpha(@accent_bg_color,0.45);
 }
 .nemo-window .nemo-inactive-pane .view,
 .nemo-window .nemo-inactive-pane iconview {
@@ -7626,6 +7701,74 @@ window#whiskermenu-window button {
 }
 .nemo-window toolbar.horizontal.primary-toolbar .linked button {
   margin-right: 0;
+}
+.nemo-window toolbar.horizontal.primary-toolbar button:active, .nemo-window toolbar.horizontal.primary-toolbar button:checked {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+.nemo-window .path-bar button,
+.nemo-window pathbar button {
+  padding: 6px 10px;
+  margin: 0 1px;
+  border-radius: 0;
+  font-size: 1.05rem;
+  font-weight: normal;
+  transition: all 200ms ease-out;
+}
+.nemo-window .path-bar button:hover,
+.nemo-window pathbar button:hover {
+  background-color: alpha(@accent_bg_color,0.5);
+  margin-top: -1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nemo-window .path-bar button:active, .nemo-window .path-bar button:checked,
+.nemo-window pathbar button:active,
+.nemo-window pathbar button:checked {
+  background-color: alpha(@accent_bg_color,0.5);
+  color: @window_fg_color;
+  margin-top: 0;
+}
+.nemo-window .path-bar button:first-child,
+.nemo-window pathbar button:first-child {
+  border-radius: 9px 0 0 9px;
+}
+.nemo-window .path-bar button:last-child,
+.nemo-window pathbar button:last-child {
+  border-radius: 0 9px 9px 0;
+}
+
+/*Main BG Color for Nemo window*/
+.nemo-window-pane .view {
+  background-color: @view_bg_color;
+}
+
+.nemo-window-pane .view.rubberband,
+.nemo-window-pane .rubberband {
+  background-color: alpha(@accent_bg_color,0.3);
+  border: 1px solid alpha(@accent_bg_color,0.8);
+}
+
+/* 2. Enhanced Sidebar Spacing and Font Size (targeted selectors requested)
+These rules are deliberately specific so they reliably override defaults
+*/
+.nemo-window .sidebar {
+  font-size: 14pt;
+  background-color: alpha(@accent_bg_color,0.1);
+}
+
+.nemo-window .sidebar .view,
+.nemo-window .sidebar iconview,
+.nemo-window .sidebar row {
+  padding: 2px 2px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 1px 0;
+}
+
+.nemo-window .sidebar .view.cell,
+.nemo-window .sidebar iconview.cell,
+.nemo-window .sidebar row.cell {
+  padding: 4px 4px;
 }
 
 #MozillaGtkWidget.background selection:focus, #MozillaGtkWidget.background selection {
@@ -7671,7 +7814,9 @@ window.background.caja-navigation-window #Toolbar:backdrop {
   border-style: solid none none none;
 }
 
-.caja-notebook .view, .caja-notebook .view.frame, .caja-notebook .frame {
+.caja-notebook .view,
+.caja-notebook .view.frame,
+.caja-notebook .frame {
   border-left: 0;
   border-right: 0;
 }
@@ -7787,13 +7932,13 @@ geary-conversation-viewer#conversation_viewer searchbar > revealer > box {
 }
 
 .geary-folder .sidebar.view:selected {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 .geary-folder .sidebar.view:selected:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 .geary-folder .sidebar.view:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 
 #DialogNotebook treeview.view:hover {
@@ -7833,13 +7978,13 @@ window.background:not(.solid-csd):not(.csd) > notebook > header tab {
   box-shadow: none;
 }
 window.background:not(.solid-csd):not(.csd) > notebook > header tab:hover {
-  background-color: alpha(currentColor,0.07);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.4);
 }
 window.background:not(.solid-csd):not(.csd) > notebook > header tab:active, window.background:not(.solid-csd):not(.csd) > notebook > header tab:checked {
-  background-color: alpha(currentColor,0.1);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.3);
 }
 window.background:not(.solid-csd):not(.csd) > notebook > header tab:checked:hover {
-  background-color: alpha(currentColor,0.12);
+  background-color: mix(@accent_bg_color,@window_bg_color,0.25);
 }
 
 window.background:not(.solid-csd):not(.csd) > notebook > stack:not(:only-child) {
@@ -7857,14 +8002,15 @@ window.background:not(.solid-csd):not(.csd) > notebook > stack:not(:only-child) 
   box-shadow: none;
 }
 #settingsDialog .dialog-vbox.vertical tab:checked {
-  color: @window_fg_color;
-  background-color: mix(@window_fg_color,@window_bg_color,0.7);
+  color: @accent_color;
+  background-color: alpha(@accent_bg_color,0.25);
   box-shadow: none;
   text-shadow: none;
   -gtk-icon-shadow: none;
 }
 #settingsDialog .dialog-vbox.vertical tab:checked:hover {
-  background-color: mix(@window_fg_color,@window_bg_color,0.65);
+  background-color: alpha(@accent_bg_color,0.3);
+  color: @accent_color;
 }
 
 /*# sourceMappingURL=gtk.css.map */
